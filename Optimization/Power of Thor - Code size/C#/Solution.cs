@@ -1,0 +1,1 @@
+﻿using System;class Player{static void Main(string[] args){string[] inputs=Console.ReadLine().Split(' ');int A=int.Parse(inputs[0]);int B=int.Parse(inputs[1]);int C=int.Parse(inputs[2]);int D=int.Parse(inputs[3]);while(true){string X="";if(A>C){C++;X="E";}else if(A<C){C--;X="W";}string Y="";if(B>D){D++;Y="S";}else if(B<D){D--;Y="N";}Console.WriteLine((Y)+(X));}}}
