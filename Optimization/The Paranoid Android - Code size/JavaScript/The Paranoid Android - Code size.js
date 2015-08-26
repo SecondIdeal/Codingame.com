@@ -1,0 +1,1 @@
+﻿[,,,a,b,,,c]=readline().split(' ');z=[];for(i=0;i<c;i++){[d,e]=readline().split(' ');z[d]=e-0;}z[a]=b-0;for(;;){[g,h,j]=readline().split(' ');print((g==-1)?'WAIT':(j=='RIGHT'&&h>z[g]||j=='LEFT'&&h<z[g])?'BLOCK':'WAIT');}
