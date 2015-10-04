@@ -17,10 +17,9 @@ class Player
             {
                 heightsArray[i] = int.Parse(Console.ReadLine()); // represents the height of one mountain, from 9 to 0. Mountain heights are provided from left to right.
             }
-
             int maxIndex = heightsArray.ToList().IndexOf(heightsArray.Max());
-
-            if (spaceX == maxIndex) { Console.WriteLine("Fire"); } else { Console.WriteLine("Hold"); }
+            
+            Console.WriteLine(spaceX == maxIndex ? "Fire" : "Hold");
         }
     }
 }
