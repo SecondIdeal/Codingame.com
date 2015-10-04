@@ -5,21 +5,21 @@ class Solution
 {
     static void Main(string[] args)
     {
-        int N = int.Parse(Console.ReadLine()); // Number of elements which make up the association table.
-        int Q = int.Parse(Console.ReadLine()); // Number Q of file names to be analyzed.
+        int numberOfElements = int.Parse(Console.ReadLine()); // Number of elements which make up the association table.
+        int nubmerOfFileNames = int.Parse(Console.ReadLine()); // Number Q of file names to be analyzed.
 
-        Dictionary<string, string> typeDict = new Dictionary<string, string>();
+        Dictionary<string, string> typeDictionary = new Dictionary<string, string>();
 
-        for (int i = 0; i < N; i++)
+        for (int i = 0; i < numberOfElements; i++)
         {
             string[] inputs = Console.ReadLine().Split(' ');
-            string EXT      = inputs[0]; // file extension
-            string MT       = inputs[1]; // MIME type.
+            string extension      = inputs[0]; // file extension
+            string mimeType       = inputs[1]; // MIME type.
 
-            typeDict.Add(EXT.ToLower(), MT);
+            typeDictionary.Add(extension.ToLower(), mimeType);
         }
 
-        for (int i = 0; i < Q; i++)
+        for (int i = 0; i < nubmerOfFileNames; i++)
         {
             string fileName = Console.ReadLine(); // One file name per line.
 
@@ -28,13 +28,10 @@ class Solution
                 int indexOfSubstring = fileName.LastIndexOf(".");
                 string extension = fileName.Substring(indexOfSubstring + 1).ToLower(); // Including a dot
 
-                if (typeDict.ContainsKey(extension))
-                {
-                    Console.WriteLine(typeDict[extension]);
-                }
-                else { Console.WriteLine("UNKNOWN"); }
+                Console.WriteLine(typeDictionary.ContainsKey(extension) ? typeDictionary[extension] : "UNKNOWN");
             }
-            else { Console.WriteLine("UNKNOWN"); }
+            else 
+                Console.WriteLine("UNKNOWN");
         }
     }
 }

@@ -1,33 +1,31 @@
-﻿using System;
-using System.Linq;
-using System.Text;
+import java.util.*;
+import java.io.*;
 
-class Solution
-{
-    static void Main(string[] args)
-    {
-        string message = Console.ReadLine();
+class Solution {
+
+    public static void main(String args[]) throws UnsupportedEncodingException {
+        Scanner in = new Scanner(System.in);
+        String message = in.nextLine();
+
+        byte[] bArray = message.getBytes("US-ASCII");
 
         // Example: "C" >> "67"
-        byte[] bArray = Encoding.ASCII.GetBytes(message);
-
-        string binary = String.Empty;
-        foreach (byte bit in bArray)
+        String binary = "";
+        for (int i = 0; i < bArray.length; i++)
         {
-            // The input message consists of ASCII characters (7-bit)!
-            binary += Convert.ToString(bit, 2).PadLeft(7, '0');
+            binary += String.format("%7s", (Integer.toBinaryString(bArray[i]))).replace(' ', '0');
         }
 
-        int[] intArray = binary.Select(o => Convert.ToInt32(o)).ToArray();
+        char[] chars = binary.toCharArray();
 
         // It means the beginning of text
         int lastPosition    = 2;
-        string result       = "";
+        String result       = "";
 
         // ASCII >> 49 = 1; 48 = 0
-        for (int i = 0; i < intArray.Length; i++)
+        for (int i = 0; i < chars.length; i++)
         {
-            if (intArray[i] == 49)
+            if (chars[i] == '1')
             {
                 if (lastPosition == 1)
                     result += "0";
@@ -48,6 +46,6 @@ class Solution
                 lastPosition = 0; // new last bit
             }
         }
-        Console.WriteLine(result);
+        System.out.println(result);
     }
 }

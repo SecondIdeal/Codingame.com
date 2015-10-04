@@ -7,11 +7,11 @@ class Solution
     {
         string LON = Console.ReadLine(); // User's longitude (in degrees)
         string LAT = Console.ReadLine(); // User's latitude (in degrees)
-        int N = int.Parse(Console.ReadLine()); // The number N of defibrillators located in the streets of Montpellier
+        int numberOfDefib = int.Parse(Console.ReadLine()); // The number N of defibrillators located in the streets of Montpellier
 
         Dictionary<double, string> defibDictionary = new Dictionary<double, string>();
 
-        for (int i = 0; i < N; i++)
+        for (int i = 0; i < numberOfDefib; i++)
         {
             // ID;Name;Adress;Phone number;Longitude (degrees);Latitude (degrees)
             string defibInfo = Console.ReadLine();
@@ -39,14 +39,11 @@ class Solution
         double minDistance = double.MaxValue;
         foreach (var pair in defibDictionary)
         {
-            if (pair.Key < minDistance) { minDistance = pair.Key; }
+            if (pair.Key < minDistance) 
+                minDistance = pair.Key;
         }
 
         // The name of the defibrillator located the closest to the user’s position.
-        if (defibDictionary.ContainsKey(minDistance)) 
-        { 
-            Console.WriteLine(defibDictionary[minDistance]); 
-        }
-        else { Console.WriteLine("There is no such key in dictionary!"); }
+        Console.WriteLine(defibDictionary.ContainsKey(minDistance) ? defibDictionary[minDistance] : "There is no such key in dictionary!");
     }
 }
