@@ -15,27 +15,15 @@ class Player
             int speed = int.Parse(Console.ReadLine()); // the motorbike's speed.
             int position = int.Parse(Console.ReadLine()); // the position on the road of the motorbike.
 
-            if (hasJumped)
-            {
+            if (hasJumped || speed > (gap + 1))
                 Console.WriteLine("SLOW");
-            }
-            else if (position == (road - 1))
-            {
+            else if (position == (road - 1)) {
                 Console.WriteLine("JUMP");
-                hasJumped = true;
-            }
+                hasJumped = true; }
             else if (speed == (gap + 1))
-            {
                 Console.WriteLine("WAIT");
-            }
-            else if (speed > (gap + 1))
-            {
-                Console.WriteLine("SLOW");
-            }
             else
-            {
                 Console.WriteLine("SPEED");
-            }
         }
     }
 }

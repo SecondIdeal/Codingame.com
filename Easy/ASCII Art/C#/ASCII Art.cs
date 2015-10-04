@@ -5,20 +5,20 @@ class Solution
 {
     static void Main(string[] args)
     {
-        int tLenght = int.Parse(Console.ReadLine());
-        int tHeight = int.Parse(Console.ReadLine());
+        int textLenght = int.Parse(Console.ReadLine());
+        int textHeight = int.Parse(Console.ReadLine());
         string text = Console.ReadLine();
 
         Dictionary<string, string[]> characters = new Dictionary<string, string[]>();
         string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ?";
 
         for (int l = 0; l < alphabet.Length; l++)
-        { 
-            characters.Add(alphabet.Substring(l, 1), new string[tHeight]); 
+        {
+            characters.Add(alphabet.Substring(l, 1), new string[textHeight]); 
         }
 
         string result = "";
-        for (int i = 0; i < tHeight; i++)
+        for (int i = 0; i < textHeight; i++)
         {
             string ROW = Console.ReadLine();
 
@@ -26,8 +26,8 @@ class Solution
             while (ROW.Length > 0)
             {
                 string letter = alphabet.Substring(position, 1);
-                characters[letter][i] = ROW.Substring(0, tLenght);
-                ROW = ROW.Substring(tLenght);
+                characters[letter][i] = ROW.Substring(0, textLenght);
+                ROW = ROW.Substring(textLenght);
 
                 position++;
             }
@@ -36,13 +36,9 @@ class Solution
             {
                 string letter = text.Substring(x, 1).ToUpper();
                 if (characters.ContainsKey(letter))
-                {
                     result += characters[letter][i].ToString();
-                }
                 else
-                {
                     result += characters["?"][i].ToString();
-                }
             }
             result += Environment.NewLine;
         }

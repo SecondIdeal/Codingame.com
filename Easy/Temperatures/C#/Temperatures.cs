@@ -9,9 +9,7 @@ class Solution
         string temps = Console.ReadLine(); // the N temperatures expressed as integers ranging from -273 to 5526
 
         if (countTemp == 0)
-        {
             Console.WriteLine("0");
-        }
         else
         {
             string[] tempArray = temps.Split(' ');
@@ -24,15 +22,11 @@ class Solution
                 int temp = int.Parse(tempArray[i]);
                 int tempAbs = Math.Abs(temp);
 
-                if (minAbs > tempAbs)
-                {
+                if (minAbs > tempAbs) {
                     minAbs = tempAbs;
-                    nearestToZero = temp;
-                }
+                    nearestToZero = temp; }
                 else if (minAbs == tempAbs)
-                {
                     nearestToZero = Math.Max(temp, nearestToZero);
-                }
             }
             Console.WriteLine(nearestToZero);
         }
