@@ -40,12 +40,10 @@ class Player
                 continue;
             }
 
-            if (direction == "RIGHT" && clonePos > exitsArray[cloneFloor])
-            { Console.WriteLine("BLOCK"); }
-            else if (direction == "LEFT" && clonePos < exitsArray[cloneFloor])
-            { Console.WriteLine("BLOCK"); }
+            if (direction == "RIGHT" && clonePos > exitsArray[cloneFloor] || direction == "LEFT" && clonePos < exitsArray[cloneFloor])
+                Console.WriteLine("BLOCK");
             else
-            { Console.WriteLine("WAIT"); }
+                Console.WriteLine("WAIT");
         }
     }
 }
