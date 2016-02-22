@@ -1,1 +1,1 @@
-﻿using System;class Player{static void Main(string[] args){string[] inputs=Console.ReadLine().Split(' ');int A=int.Parse(inputs[0]);int B=int.Parse(inputs[1]);int C=int.Parse(inputs[2]);int D=int.Parse(inputs[3]);while(true){string X="";if(A>C){C++;X="E";}else if(A<C){C--;X="W";}string Y="";if(B>D){D++;Y="S";}else if(B<D){D--;Y="N";}Console.WriteLine((Y)+(X));}}}
+﻿using System;class P{static void Main(){var i=Array.ConvertAll(Console.ReadLine().Split(),int.Parse);for(int x=i[0]-i[2],y=i[1]-i[3];;Console.WriteLine((0<y--?"S":"")+(0!=x?0<x--?"E":"W":"")));}}

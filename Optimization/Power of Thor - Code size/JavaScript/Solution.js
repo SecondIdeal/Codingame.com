@@ -1,1 +1,1 @@
-[A,B,C,D]=readline().split(' ');for(;;)print((B>D++?'S':B>D?'N':'')+(A>C++?'E':A<--C?'W':''))
+for([A,B,C,D]=readline().split(' ');;)print((D++-B<0?'S':'')+(C-A<0?'E':C-A?'W':''))

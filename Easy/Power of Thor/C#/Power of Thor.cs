@@ -2,23 +2,9 @@
 
 class Player
 {
-    static void Main(string[] args)
+    static void Main()
     {
-        string[] inputs = Console.ReadLine().Split(' ');
-        int LX = int.Parse(inputs[0]); // the X position of the light of power
-        int LY = int.Parse(inputs[1]); // the Y position of the light of power
-        int TX = int.Parse(inputs[2]); // Thor's starting X position
-        int TY = int.Parse(inputs[3]); // Thor's starting Y position
-
-        while (true)
-        {
-            string directionX = "";
-            if (LX > TX) { TX++; directionX = "E"; } else if (LX < TX) { TX--; directionX = "W"; }
-
-            string directionY = "";
-            if (LY > TY) { TY++; directionY = "S"; } else if (LY < TY) { TY--; directionY = "N"; }
-
-            Console.WriteLine((directionY) + (directionX));
-        }
+        var inputs = Array.ConvertAll(Console.ReadLine().Split(), int.Parse); // Light X position, Light Y position, Thor X position, Thor Y position
+        for (int x = inputs[0] - inputs[2], y = inputs[1] - inputs[3]; ; Console.WriteLine((0 != y ? 0 < y-- ? "S" : "N" : "") + (0 != x ? 0 < x-- ? "E" : "W" : ""))) ;
     }
 }

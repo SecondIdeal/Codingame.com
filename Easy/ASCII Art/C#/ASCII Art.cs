@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 class Solution
 {
-    static void Main(string[] args)
+    static void Main()
     {
         int textLenght = int.Parse(Console.ReadLine());
         int textHeight = int.Parse(Console.ReadLine());
@@ -13,9 +13,7 @@ class Solution
         string alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ?";
 
         for (int l = 0; l < alphabet.Length; l++)
-        {
             characters.Add(alphabet.Substring(l, 1), new string[textHeight]); 
-        }
 
         string result = "";
         for (int i = 0; i < textHeight; i++)
@@ -35,10 +33,7 @@ class Solution
             for (int x = 0; x < text.Length; x++)
             {
                 string letter = text.Substring(x, 1).ToUpper();
-                if (characters.ContainsKey(letter))
-                    result += characters[letter][i].ToString();
-                else
-                    result += characters["?"][i].ToString();
+                result += characters[(characters.ContainsKey(letter) ? letter : "?")][i].ToString();
             }
             result += Environment.NewLine;
         }

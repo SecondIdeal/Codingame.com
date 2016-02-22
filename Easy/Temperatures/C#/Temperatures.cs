@@ -1,33 +1,23 @@
 ﻿using System;
-using System.Collections.Generic;
 
 class Solution
 {
     static void Main(string[] args)
     {
-        int countTemp = int.Parse(Console.ReadLine()); // the number of temperatures to analyse
-        string temps = Console.ReadLine(); // the N temperatures expressed as integers ranging from -273 to 5526
-
-        if (countTemp == 0)
+        int countOfTemperatures = int.Parse(Console.ReadLine());
+        if (countOfTemperatures == 0)
             Console.WriteLine("0");
         else
         {
-            string[] tempArray = temps.Split(' ');
-
-            int minAbs = int.MaxValue;
-            int nearestToZero = minAbs;
-
-            for (int i = 0; i < tempArray.Length; i++)
-            {
-                int temp = int.Parse(tempArray[i]);
-                int tempAbs = Math.Abs(temp);
-
-                if (minAbs > tempAbs) {
-                    minAbs = tempAbs;
-                    nearestToZero = temp; }
-                else if (minAbs == tempAbs)
-                    nearestToZero = Math.Max(temp, nearestToZero);
-            }
+            int[] temps = Array.ConvertAll(Console.ReadLine().Split(' '), int.Parse);
+            
+            int nearestToZero = int.MaxValue;
+            for (int i = 0; i < temps.Length; i++)
+                nearestToZero = 
+                Math.Abs(temps[i]) < Math.Abs(nearestToZero) ? temps[i] :
+                Math.Abs(temps[i]) > Math.Abs(nearestToZero) ? nearestToZero : 
+                Math.Max(temps[i], nearestToZero);
+            
             Console.WriteLine(nearestToZero);
         }
     }

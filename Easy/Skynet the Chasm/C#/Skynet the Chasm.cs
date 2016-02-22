@@ -2,28 +2,21 @@
 
 class Player
 {
-    static void Main(string[] args)
+    static void Main()
     {
         int road = int.Parse(Console.ReadLine()); // the length of the road before the gap.
         int gap = int.Parse(Console.ReadLine()); // the length of the gap.
         int platform = int.Parse(Console.ReadLine()); // the length of the landing platform.
-
-        bool hasJumped = false;
 
         while (true)
         {
             int speed = int.Parse(Console.ReadLine()); // the motorbike's speed.
             int position = int.Parse(Console.ReadLine()); // the position on the road of the motorbike.
 
-            if (hasJumped || speed > (gap + 1))
-                Console.WriteLine("SLOW");
-            else if (position == (road - 1)) {
-                Console.WriteLine("JUMP");
-                hasJumped = true; }
-            else if (speed == (gap + 1))
-                Console.WriteLine("WAIT");
-            else
-                Console.WriteLine("SPEED");
+            Console.WriteLine(
+                position > road || speed > gap + 1 ? "SLOW" : 
+                speed < gap + 1 ? "SPEED" : 
+                position == road - 1 ? "JUMP" : "WAIT");
         }
     }
 }

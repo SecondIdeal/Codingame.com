@@ -1,12 +1,14 @@
 ﻿using System;
+using System.Linq;
 using System.Collections.Generic;
 
 class Solution
 {
-    static void Main(string[] args)
+    static void Main()
     {
-        string LON = Console.ReadLine(); // User's longitude (in degrees)
-        string LAT = Console.ReadLine(); // User's latitude (in degrees)
+
+        double LON = double.Parse(Console.ReadLine().Replace(',', '.')); // User's longitude (in degrees)
+        double LAT = double.Parse(Console.ReadLine().Replace(',', '.')); // User's latitude (in degrees)
         int numberOfDefib = int.Parse(Console.ReadLine()); // The number N of defibrillators located in the streets of Montpellier
 
         Dictionary<double, string> defibDictionary = new Dictionary<double, string>();
@@ -14,36 +16,18 @@ class Solution
         for (int i = 0; i < numberOfDefib; i++)
         {
             // ID;Name;Adress;Phone number;Longitude (degrees);Latitude (degrees)
-            string defibInfo = Console.ReadLine();
+            string[] defibArray = Console.ReadLine().Split(';');
 
-            string[] defibArray = defibInfo.Split(';');
+            double dLON = double.Parse(defibArray[4].Replace(',', '.'));
+            double dLAT = double.Parse(defibArray[5].Replace(',', '.'));
 
-            string dName = defibArray[1];
+            double x = (dLON - LON) * Math.Cos((LAT - dLAT) / 2);
+            double y = (dLAT - LAT);
 
-            // Turning the comma [,] into point [.]
-            double dLON = Convert.ToDouble(defibArray[defibArray.Length - 2].Replace(",", "."));
-            double dLAT = Convert.ToDouble(defibArray[defibArray.Length - 1].Replace(",", "."));
+            double distance = Math.Sqrt(Math.Pow(x, 2) + Math.Pow(y, 2)) * 6371;
 
-            // The latitudes and longitudes are expressed in radians
-            dLON = dLON * (180 / Math.PI);
-            dLAT = dLAT * (180 / Math.PI);
-
-            double uLON = Convert.ToDouble(LON.Replace(",", ".")) * (180 / Math.PI);
-            double uLAT = Convert.ToDouble(LAT.Replace(",", ".")) * (180 / Math.PI);
-
-            double distance = Math.Sqrt(((uLON - dLON) * (uLON - dLON)) + ((uLAT - dLAT) * (uLAT - dLAT)));  // Distance between user position and defibrillator;
-
-            defibDictionary.Add(distance, dName);
+            defibDictionary.Add(distance, defibArray[1]);
         }
-
-        double minDistance = double.MaxValue;
-        foreach (var pair in defibDictionary)
-        {
-            if (pair.Key < minDistance) 
-                minDistance = pair.Key;
-        }
-
-        // The name of the defibrillator located the closest to the user’s position.
-        Console.WriteLine(defibDictionary.ContainsKey(minDistance) ? defibDictionary[minDistance] : "There is no such key in dictionary!");
+        Console.WriteLine(defibDictionary[defibDictionary.Keys.Min()]);
     }
 }
