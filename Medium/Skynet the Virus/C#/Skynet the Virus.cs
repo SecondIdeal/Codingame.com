@@ -2,30 +2,28 @@
 
 class Player
 {
-    static void Main(string[] args)
+    static void Main()
     {
-        string[] inputs = Console.ReadLine().Split(' ');
-        int totalNodes  = int.Parse(inputs[0]); // The total number of nodes in the level, including the gateways
-        int numberLinks = int.Parse(inputs[1]); // The number of links
-        int numberExits = int.Parse(inputs[2]); // The number of exit gateways
+        int[] inputs = Array.ConvertAll(Console.ReadLine().Split(' '), int.Parse);
+        int totalNodes  = inputs[0]; // The total number of nodes in the level, including the gateways
+        int numberLinks = inputs[1]; // The number of links
+        int numberExits = inputs[2]; // The number of exit gateways
 
         int[,] linksArray = new int[numberLinks, 2];
 
         for (int i = 0; i < numberLinks; i++)
         {
-            inputs = Console.ReadLine().Split(' ');
+            inputs = Array.ConvertAll(Console.ReadLine().Split(' '), int.Parse);
             
             // Defines a link between these nodes
-            linksArray[i, 0] = int.Parse(inputs[0]); 
-            linksArray[i, 1] = int.Parse(inputs[1]);
+            linksArray[i, 0] = inputs[0]; 
+            linksArray[i, 1] = inputs[1];
         }
 
         int[] exitIndex = new int[numberExits];
 
         for (int i = 0; i < numberExits; i++)
-        {
             exitIndex[i] = int.Parse(Console.ReadLine()); // The index of a gateway node
-        }
 
         // Sorting
         for (int i = 0; i < numberLinks; i++)
