@@ -2,7 +2,7 @@
 
 class Solution
 {
-    static void Main(string[] args)
+    static void Main()
     {
         int countOfTemperatures = int.Parse(Console.ReadLine());
         if (countOfTemperatures == 0)

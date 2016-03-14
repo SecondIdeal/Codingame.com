@@ -56,7 +56,7 @@ class Player
                         Console.WriteLine(exitIndex[k] + " " + agentIndex);
                         linksArray[i, 0] = -1;
                         AgentIsNear = true;
-                        breakLoop = true;
+                        breakLoop   = true;
                         break;
                     }
                 }

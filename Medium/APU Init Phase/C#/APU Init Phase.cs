@@ -2,10 +2,10 @@
 
 class Player
 {
-    static void Main(string[] args)
+    static void Main()
     {
-        int width = int.Parse(Console.ReadLine()); // the number of cells on the X axis
-        int height = int.Parse(Console.ReadLine()); // the number of cells on the Y axis
+        int width   = int.Parse(Console.ReadLine()); // the number of cells on the X axis
+        int height  = int.Parse(Console.ReadLine()); // the number of cells on the Y axis
 
         int[,] gridArray = new int[width, height];
 
@@ -14,12 +14,7 @@ class Player
             string line = Console.ReadLine(); // width characters, each either 0 or .
 
             for (int k = 0; k < width; k++)
-            {
-                if (line[k] == '0') 
-                { gridArray[k, i] = 0; }
-                else 
-                { gridArray[k, i] = -1; }
-            }
+                gridArray[k, i] = (line[k] == '0' ? 0 : -1);
         }
 
         // From left to right
@@ -34,10 +29,10 @@ class Player
                     int n = coodinX + 1;
                     while (n < width)
                     {
-                        if (coordXR == -1 && coordYR == -1) 
+                        if (coordXR == -1 && coordYR == -1 && gridArray[n, coordY] == 0) 
                         {
-                            if (gridArray[n, coordY] == 0)
-                            { coordXR = n; coordYR = coordY; }
+                            coordXR = n; 
+                            coordYR = coordY;
                         }
                         n++;
                     }
@@ -47,10 +42,10 @@ class Player
                     int m = coordY + 1;
                     while (m < height)
                     {
-                        if (coordXB == -1 && coordYB == -1)
+                        if (coordXB == -1 && coordYB == -1 && gridArray[coodinX, m] == 0)
                         {
-                            if (gridArray[coodinX, m] == 0)
-                            { coordXB = coodinX; coordYB = m; }
+                            coordXB = coodinX; 
+                            coordYB = m;
                         }
                         m++;
                     }

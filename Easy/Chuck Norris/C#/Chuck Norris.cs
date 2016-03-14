@@ -19,7 +19,7 @@ class Solution
         int[] intArray = binary.Select(o => Convert.ToInt32(o)).ToArray();
 
         // It means the beginning of text
-        int lastPosition    = 2;
+        int lastPosition = 2;
 
         // ASCII >> 49 = 1; 48 = 0
         for (int i = 0; i < intArray.Length; i++)

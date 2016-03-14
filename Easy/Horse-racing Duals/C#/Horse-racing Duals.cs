@@ -15,9 +15,8 @@ class Solution
 
         int difference = strenghtsArray[1] - strenghtsArray[0];
         for (int i = 0; i < numberOfHorses - 1; i++)
-        {
             difference = Math.Min(difference, strenghtsArray[i + 1] - strenghtsArray[i]);
-        }
+   
         Console.WriteLine(difference);
     }
 }
