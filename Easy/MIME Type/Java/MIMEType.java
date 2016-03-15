@@ -19,18 +19,15 @@ class Solution {
 
             typeDictionary.put(extension.toLowerCase(), mimeType);
         }
+
         for (int i = 0; i < numberOfFileNames; i++) {
             String fileName = in.nextLine(); // One file name per line.
-
+            String extension = "";
 
             if (fileName.indexOf(".") != -1) // Checking for a dot
-            {
-                int indexOfSubstring = fileName.lastIndexOf(".");
-                String extension = fileName.substring(indexOfSubstring + 1).toLowerCase(); // Including a dot
+                extension = fileName.substring(fileName.lastIndexOf(".") + 1).toLowerCase(); // Including a dot
 
-                System.out.println(typeDictionary.containsKey(extension) ? typeDictionary.get(extension) : "UNKNOWN");
-            } else
-                System.out.println("UNKNOWN");
+            System.out.println(typeDictionary.containsKey(extension) ? typeDictionary.get(extension) : "UNKNOWN");
         }
     }
 }

@@ -1,6 +1,4 @@
 import java.util.*;
-import java.io.*;
-import java.math.*;
 
 class Solution {
 
@@ -8,30 +6,22 @@ class Solution {
         Scanner in = new Scanner(System.in);
         int numerOfValues = in.nextInt();
         in.nextLine();
-        String stockValues = in.nextLine();
+        String[] stockValues = in.nextLine().split(" ");
 
-        String[] row = stockValues.split(" ");
         int[] values = new int[numerOfValues];
-
-        int up = 0; int down = 0;
-        int min = 0; int maxDiff = 0;
-
         for (int i = 0; i < numerOfValues; i++)
+            values[i] = Integer.parseInt(stockValues[i]);
+
+        int maxLoss = 0;
+        int lowestVal = Integer.MAX_VALUE;
+
+        for (int i = numerOfValues - 1; i > -1; i--)
         {
-            values[i] = Integer.parseInt(row[i]);
-            if (values[i] > values[min])
-                min = i;
-
-            int diff = values[i] - values[min];
-            if (diff < maxDiff)
-            {
-                up = min;
-                down = i;
-                maxDiff = diff;
-            }
+            if (values[i] < lowestVal)
+                lowestVal = values[i];
+            else if (lowestVal - values[i] < maxLoss)
+                maxLoss = lowestVal - values[i];
         }
-        if (maxDiff > 0) { maxDiff = 0; }
-
-        System.out.println(maxDiff);
+        System.out.println(maxLoss);
     }
 }
