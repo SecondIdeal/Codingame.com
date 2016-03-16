@@ -6,7 +6,7 @@ class Solution
     static void Main()
     {
         int numberOfElements = int.Parse(Console.ReadLine()); // Number of elements which make up the association table.
-        int nubmerOfFileNames = int.Parse(Console.ReadLine()); // Number Q of file names to be analyzed.
+        int numberOfFileNames = int.Parse(Console.ReadLine()); // Number Q of file names to be analyzed.
 
         Dictionary<string, string> typeDictionary = new Dictionary<string, string>();
 
