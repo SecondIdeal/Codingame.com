@@ -1,19 +1,19 @@
-surfaceN = parseInt(readline()); // the number of points used to draw the surface of Mars.
-for (var i = 0; i < surfaceN; i++) {
+numberOfSurfacePoints = parseInt(readline()); // used to draw the surface of Mars
+for (var i = 0; i < numberOfSurfacePoints; i++) {
     inputs = readline().split(' ');
-    landX = parseInt(inputs[0]); // X coordinate of a surface point. (0 to 6999)
-    landY = parseInt(inputs[1]); // Y coordinate of a surface point. By linking all the points together in a sequential fashion, you form the surface of Mars.
+    surfaceCoordinateX = parseInt(inputs[0]); // 0 to 6999
+    surfaceCoordinateY = parseInt(inputs[1]); // 0 to 2999
 }
 
 while (true) {
     inputs  = readline().split(' ');
-    X       = parseInt(inputs[0]);
-    Y       = parseInt(inputs[1]);
-    hSpeed  = parseInt(inputs[2]); // the horizontal speed (in m/s), can be negative.
-    vSpeed  = parseInt(inputs[3]); // the vertical speed (in m/s), can be negative.
-    fuel    = parseInt(inputs[4]); // the quantity of remaining fuel in liters.
-    rotate  = parseInt(inputs[5]); // the rotation angle in degrees (-90 to 90).
-    power   = parseInt(inputs[6]); // the thrust power (0 to 4).
+    landerCoordinateX   = parseInt(inputs[0]); // in meters
+    landerCoordinateY   = parseInt(inputs[1]); // in meters
+    horizontalSpeed     = parseInt(inputs[2]); // in m/s, can be negative
+    verticalSpeed       = parseInt(inputs[3]); // in m/s, can be negative
+    fuelRemainig        = parseInt(inputs[4]); // in liters
+    rotationAngle       = parseInt(inputs[5]); // in degrees (-90 to 90)
+    thrustPower         = parseInt(inputs[6]); // 0 to 4
 
-    print(vSpeed < -36 ? '0 4' : '0 0');
+    print(verticalSpeed < -36 ? '0 4' : '0 0');
 }

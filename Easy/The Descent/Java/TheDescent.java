@@ -11,7 +11,7 @@ class Player {
             int maxValue = 0; int indexOfMax = 0;
 
             for (int i = 0; i < 8; i++) {
-                mountainHeights[i] = in.nextInt(); // represents the height of one mountain, from 9 to 0. Mountain heights are provided from left to right.
+                mountainHeights[i] = in.nextInt(); // from 9 to 0
 
                 if (mountainHeights[i] > maxValue)
                 {

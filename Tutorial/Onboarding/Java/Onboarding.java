@@ -6,12 +6,12 @@ class Player {
         Scanner in = new Scanner(System.in);
 
         while (true) {
-            String enemy1 = in.next(); // name of enemy 1
-            int dist1 = in.nextInt(); // distance to enemy 1
-            String enemy2 = in.next(); // name of enemy 2
-            int dist2 = in.nextInt(); // distance to enemy 2
+            String enemy1Name   = in.next();
+            int enemy1Distance  = in.nextInt();
+            String enemy2Name   = in.next();
+            int enemy2Distance  = in.nextInt();
 
-            System.out.println( dist1 < dist2 ? enemy1: enemy2 );
+            System.out.println(enemy1Distance < enemy2Distance ? enemy1Name: enemy2Name);
         }
     }
 }

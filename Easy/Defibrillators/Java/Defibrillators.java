@@ -4,47 +4,35 @@ class Solution {
 
     public static void main(String args[]) {
         Scanner in = new Scanner(System.in);
-        String LON = in.next(); // User's longitude (in degrees)
+        double userCoordinateLON = Double.parseDouble(in.next().replace(",", ".")); // in degrees
         in.nextLine();
-        String LAT = in.next(); // User's latitude (in degrees)
+        double userCoordinateLAT = Double.parseDouble(in.next().replace(",", ".")); // in degrees
         in.nextLine();
-        int numberOfDefib = in.nextInt(); // The number N of defibrillators located in the streets of Montpellier
+        int numberOfDefib = in.nextInt();
         in.nextLine();
-        
-        HashMap<Double, String> defibDictionary = new HashMap<Double, String>();
+
+        HashMap<Double, String> defibDistanceAndName = new HashMap<Double, String>();
 
         for (int i = 0; i < numberOfDefib; i++) {
             // ID;Name;Adress;Phone number;Longitude (degrees);Latitude (degrees)
-            String defibInfo = in.nextLine();
+            String[] defibFullInfo = in.nextLine().split(";");
 
-            String[] defibArray = defibInfo.split(";");
+            double defibCoordinateLON = Double.parseDouble(defibFullInfo[4].replace(",", "."));
+            double defibCoordinateLAT = Double.parseDouble(defibFullInfo[5].replace(",", "."));
 
-            String dName = defibArray[1];
+            double x = (defibCoordinateLON - userCoordinateLON) * Math.cos((userCoordinateLAT - defibCoordinateLAT) / 2);
+            double y = (defibCoordinateLAT - userCoordinateLAT);
+            double distanceBetweenUserAndDefib = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2)) * 6371;
 
-            // Turning the comma [,] into point [.]
-            double dLON = Double.parseDouble(defibArray[defibArray.length - 2].replace(",", "."));
-            double dLAT = Double.parseDouble(defibArray[defibArray.length - 1].replace(",", "."));
-
-            // The latitudes and longitudes are expressed in radians
-            dLON = dLON * (180 / Math.PI);
-            dLAT = dLAT * (180 / Math.PI);
-
-            double uLON = Double.parseDouble(LON.replace(",", ".")) * (180 / Math.PI);
-            double uLAT = Double.parseDouble(LAT.replace(",", ".")) * (180 / Math.PI);
-
-            double distance = Math.sqrt(((uLON - dLON) * (uLON - dLON)) + ((uLAT - dLAT) * (uLAT - dLAT)));  // Distance between user position and defibrillator;
-
-            defibDictionary.put(distance, dName);
+            defibDistanceAndName.put(distanceBetweenUserAndDefib, defibFullInfo[1]);
         }
 
-        double minDistance = Double.MAX_VALUE;
+        double minDistanceFromUserToDefib = Double.MAX_VALUE;
 
-        for(Map.Entry<Double, String> pair : defibDictionary.entrySet()) {
-            if (pair.getKey() < minDistance)
-                minDistance = pair.getKey();
+        for(Map.Entry<Double, String> pair : defibDistanceAndName.entrySet()) {
+            if (pair.getKey() < minDistanceFromUserToDefib)
+                minDistanceFromUserToDefib = pair.getKey();
         }
-
-        // The name of the defibrillator located the closest to the user’s position.
-        System.out.println(defibDictionary.containsKey(minDistance) ? defibDictionary.get(minDistance) : "There is no such key in dictionary!");
+        System.out.println(defibDistanceAndName.containsKey(minDistanceFromUserToDefib) ? defibDistanceAndName.get(minDistanceFromUserToDefib) : "There is no such key in dictionary!");
     }
 }

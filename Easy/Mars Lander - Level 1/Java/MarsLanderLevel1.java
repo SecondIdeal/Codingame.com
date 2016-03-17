@@ -4,22 +4,22 @@ class Player {
 
     public static void main(String args[]) {
         Scanner in = new Scanner(System.in);
-        int surfaceN = in.nextInt(); // the number of points used to draw the surface of Mars.
-        for (int i = 0; i < surfaceN; i++) {
-            int landX = in.nextInt(); // X coordinate of a surface point. (0 to 6999)
-            int landY = in.nextInt(); // Y coordinate of a surface point. By linking all the points together in a sequential fashion, you form the surface of Mars.
+        int numberOfSurfacePoints = in.nextInt(); // used to draw the surface of Mars
+        for (int i = 0; i < numberOfSurfacePoints; i++) {
+            int surfaceCoordinateX = in.nextInt(); // 0 to 6999
+            int surfaceCoordinateY = in.nextInt(); // 0 to 2999
         }
         
         while (true) {
-            int positionX = in.nextInt();
-            int posiotionY = in.nextInt();
-            int hSpeed = in.nextInt(); // the horizontal speed (in m/s), can be negative.
-            int vSpeed = in.nextInt(); // the vertical speed (in m/s), can be negative.
-            int fuel = in.nextInt(); // the quantity of remaining fuel in liters.
-            int rotate = in.nextInt(); // the rotation angle in degrees (-90 to 90).
-            int power = in.nextInt(); // the thrust power (0 to 4).
+            int landerCoordinateX   = in.nextInt(); // in meters
+            int landerCoordinateY   = in.nextInt(); // in meters
+            int horizontalSpeed     = in.nextInt(); // in m/s, can be negative
+            int verticalSpeed       = in.nextInt(); // in m/s, can be negative
+            int fuelRemainig        = in.nextInt(); // in liters
+            int rotationAngle       = in.nextInt(); // in degrees (-90 to 90)
+            int thrustPower         = in.nextInt(); // 0 to 4
 
-            System.out.println("0 " + ((Math.abs(vSpeed) > 39) ? "4" : "0"));
+            System.out.println("0 " + ((Math.abs(verticalSpeed) > 39) ? "4" : "0"));
         }
     }
 }

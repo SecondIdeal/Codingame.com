@@ -2,16 +2,16 @@
 
 class Player
 {
-    static void Main(string[] args)
+    static void Main()
     {
         while (true)
         {
-            string enemy1 = Console.ReadLine(); // name of enemy 1
-            int dist1 = int.Parse(Console.ReadLine()); // distance to enemy 1
-            string enemy2 = Console.ReadLine(); // name of enemy 2
-            int dist2 = int.Parse(Console.ReadLine()); // distance to enemy 2
+            string enemy1Name   = Console.ReadLine();
+            int enemy1Distance  = int.Parse(Console.ReadLine());
+            string enemy2Name   = Console.ReadLine();
+            int enemy2Distance  = int.Parse(Console.ReadLine()); 
 
-            Console.WriteLine((dist1 < dist2) ? enemy1 : enemy2);
+            Console.WriteLine((enemy1Distance < enemy2Distance) ? enemy1Name : enemy2Name);
         }
     }
 }

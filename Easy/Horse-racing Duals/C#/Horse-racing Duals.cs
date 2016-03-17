@@ -6,17 +6,17 @@ class Solution
     {
         int numberOfHorses = int.Parse(Console.ReadLine());
 
-        int[] strenghtsArray = new int[numberOfHorses];
+        int[] horsesStrenghts = new int[numberOfHorses];
 
         for (int i = 0; i < numberOfHorses; i++)
-            strenghtsArray[i] = int.Parse(Console.ReadLine()); // The strength of each horse
+            horsesStrenghts[i] = int.Parse(Console.ReadLine()); // The strength of each horse
 
-        Array.Sort(strenghtsArray);
+        Array.Sort(horsesStrenghts);
 
-        int difference = strenghtsArray[1] - strenghtsArray[0];
+        int minStrenghtDifference = horsesStrenghts[1] - horsesStrenghts[0];
         for (int i = 0; i < numberOfHorses - 1; i++)
-            difference = Math.Min(difference, strenghtsArray[i + 1] - strenghtsArray[i]);
-   
-        Console.WriteLine(difference);
+            minStrenghtDifference = Math.Min(minStrenghtDifference, horsesStrenghts[i + 1] - horsesStrenghts[i]);
+
+        Console.WriteLine(minStrenghtDifference);
     }
 }

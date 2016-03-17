@@ -6,18 +6,18 @@ class Solution {
         Scanner in = new Scanner(System.in);
         int numberOfHorses = in.nextInt();
 
-        int[] strenghtsArray = new int[numberOfHorses];
+        int[] horsesStrenghts = new int[numberOfHorses];
 
         for (int i = 0; i < numberOfHorses; i++)
-            strenghtsArray[i] = in.nextInt();
+            horsesStrenghts[i] = in.nextInt();
 
-        Arrays.sort(strenghtsArray);
+        Arrays.sort(horsesStrenghts);
 
-        int difference = strenghtsArray[1] - strenghtsArray[0];
+        int minStrenghtDifference = horsesStrenghts[1] - horsesStrenghts[0];
 
         for (int i = 0; i < numberOfHorses - 1; i++)
-            difference = Math.min(difference, (strenghtsArray[i + 1] - strenghtsArray[i]));
+            minStrenghtDifference = Math.min(minStrenghtDifference, (horsesStrenghts[i + 1] - horsesStrenghts[i]));
 
-        System.out.println(difference);
+        System.out.println(minStrenghtDifference);
     }
 }

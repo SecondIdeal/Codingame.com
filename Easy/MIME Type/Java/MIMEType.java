@@ -10,14 +10,14 @@ class Solution {
         int numberOfFileNames = in.nextInt(); // Number Q of file names to be analyzed.
         in.nextLine();
 
-        HashMap<String, String> typeDictionary = new HashMap<String, String>();
+        HashMap<String, String> file_extensions_association_dict = new HashMap<String, String>();
 
         for (int i = 0; i < numberOfElements; i++) {
             String extension = in.next(); // file extension
             String mimeType = in.next(); // MIME type.
             in.nextLine();
 
-            typeDictionary.put(extension.toLowerCase(), mimeType);
+            file_extensions_association_dict.put(extension.toLowerCase(), mimeType);
         }
 
         for (int i = 0; i < numberOfFileNames; i++) {
@@ -27,7 +27,7 @@ class Solution {
             if (fileName.indexOf(".") != -1) // Checking for a dot
                 extension = fileName.substring(fileName.lastIndexOf(".") + 1).toLowerCase(); // Including a dot
 
-            System.out.println(typeDictionary.containsKey(extension) ? typeDictionary.get(extension) : "UNKNOWN");
+            System.out.println(file_extensions_association_dict.containsKey(extension) ? file_extensions_association_dict.get(extension) : "UNKNOWN");
         }
     }
 }

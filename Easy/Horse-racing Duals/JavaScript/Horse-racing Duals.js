@@ -1,17 +1,17 @@
 numberOfHorses = parseInt(readline());
 
-strenghtsArray = [];
+horsesStrenghts = [];
 
 for (i = 0; i < numberOfHorses ; i++)
-    strenghtsArray[i] = parseInt(readline());
+    horsesStrenghts[i] = parseInt(readline());
 
-strenghtsArray = strenghtsArray.sort(function (a, b) {
+horsesStrenghts = horsesStrenghts.sort(function (a, b) {
     if (a > b) return 1;
     if (a < b) return -1;
 })
 
-difference = strenghtsArray[1] - strenghtsArray[0];
+minStrenghtDifference = horsesStrenghts[1] - horsesStrenghts[0];
 for (i = 0; i < numberOfHorses - 1; i++)
-    difference = Math.min(difference, strenghtsArray[i + 1] - strenghtsArray[i]);
+    minStrenghtDifference = Math.min(minStrenghtDifference, horsesStrenghts[i + 1] - horsesStrenghts[i]);
 
-print(difference);
+print(minStrenghtDifference);

@@ -1,23 +1,23 @@
-userLON = parseFloat(readline().replace(',', '.'));
-userLAT = parseFloat(readline().replace(',', '.'));
+userCoordinateLON = parseFloat(readline().replace(',', '.')); // in degrees
+userCoordinateLAT = parseFloat(readline().replace(',', '.')); // in degrees
 numberOfDefib = parseInt(readline());
 
-minDistance = Infinity;
-closestDefibName = "";
+minDistanceFromUserToDefib = Infinity;
+closestToUserDefibName = "";
 
 for (i = 0; i < numberOfDefib; i++) {
-    defibArray = readline().split(";");
+    defibFullInfo = readline().split(";");
 
-    defibLON = parseFloat(defibArray[4].replace(',', '.'));
-    defibLAT = parseFloat(defibArray[5].replace(',', '.'));
+    defibCoordinateLON = parseFloat(defibFullInfo[4].replace(',', '.'));
+    defibCoordinateLAT = parseFloat(defibFullInfo[5].replace(',', '.'));
 
-    x = (defibLON - userLON) * Math.cos((userLAT - defibLAT) / 2);
-    y = (defibLAT - userLAT);
+    x = (defibCoordinateLON - userCoordinateLON) * Math.cos((userCoordinateLAT - defibCoordinateLAT) / 2);
+    y = (defibCoordinateLAT - userCoordinateLAT);
 
-    distance = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2)) * 6371;
-    if (distance < minDistance) {
-        minDistance = distance;
-        closestDefibName = defibArray[1];
+    distanceBetweenUserAndDefib = Math.sqrt(Math.pow(x, 2) + Math.pow(y, 2)) * 6371;
+    if (distanceBetweenUserAndDefib < minDistanceFromUserToDefib) {
+        minDistanceFromUserToDefib = distanceBetweenUserAndDefib;
+        closestToUserDefibName = defibFullInfo[1];
     }
 }
-print(closestDefibName);
+print(closestToUserDefibName);
